@@ -1,0 +1,72 @@
+{
+	"name": "@appartmint/tsm-types",
+	"author": "App Art Mint LLC",
+	"version": "1.0.1",
+	"type": "module",
+	"license": "MIT",
+	"description": "TypeScript Types from App Art Mint LLC",
+	"keywords": [
+		"typescript",
+		"types",
+		"app art mint",
+		"appartmint"
+	],
+	"homepage": "https://github.com/App-Art-Mint/tsm-types#readme",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/App-Art-Mint/tsm-types.git"
+	},
+	"bugs": {
+		"url": "https://github.com/App-Art-Mint/tsm-types/issues"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"files": [
+		"dist/**/*.{js,d.ts}"
+	],
+	"exports": {
+		"./*": {
+			"types": "./dist/*.d.ts",
+			"import": "./dist/*.esm.js",
+			"require": "./dist/*.cjs.js",
+			"default": "./dist/*.esm.js"
+		}
+	},
+	"scripts": {
+		"version": "npm i --package-lock-only && git add -A",
+		"postversion": "git push && git push --tags && cross-replace gh release create \"v$npm_package_version\" --generate-notes",
+		"prepare": "run-s build",
+		"clean": "rimraf dist",
+		"build": "run-p test:types build:prod",
+		"build:prod": "vite build",
+		"test": "run-p test:**",
+		"test:types": "tsc -b",
+		"test:deps": "depcruise src",
+		"lint": "eslint --fix .",
+		"format": "run-s format:**",
+		"format:imports": "npm run format:imports --prefix ./node_modules/@appartmint/tsm-scripts",
+		"yalc:publish": "yalc publish",
+		"check:updates": "npm-check-updates"
+	},
+	"devDependencies": {
+		"@appartmint/tsm-scripts": "^0.4.0",
+		"@eslint/js": "^10.0.1",
+		"@types/node": "^26.1.1",
+		"cross-replace": "^0.2.0",
+		"dependency-cruiser": "^18.0.0",
+		"eslint": "^10.7.0",
+		"glob": "^13.0.6",
+		"globals": "^17.7.0",
+		"jiti": "^2.7.0",
+		"npm-check-updates": "^22.2.9",
+		"npm-run-all2": "^9.0.2",
+		"rimraf": "^6.1.3",
+		"tsx": "^4.23.0",
+		"typescript": "^6.0.3",
+		"typescript-eslint": "^8.63.0",
+		"vite": "^8.1.4",
+		"vite-plugin-dts": "^5.0.3",
+		"yalc": "^1.0.0-pre.53"
+	}
+}
