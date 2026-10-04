@@ -1,4 +1,4 @@
-import { Prettify } from '@/util';
+import type { Prettify } from '@/util';
 
 export type TextTypes = 'text' | 'textarea' | 'search' | 'tel' | 'url' | 'email' | 'password';
 export type NumberTypes = 'number' | 'month' | 'week';

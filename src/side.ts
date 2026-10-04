@@ -1,8 +1,1 @@
-export const sides = [
-	'top',
-	'right',
-	'bottom',
-	'left',
-] as const;
-
-export type Side = (typeof sides)[number];
+export type Side = 'top' | 'right' | 'bottom' | 'left';
